@@ -1,0 +1,43 @@
+logging:
+  enabled: true
+  log_directory: "logs/"
+  log_format: "jsonl" # One JSON object per line
+  daily_rotation: true
+  retention_days: 90 # Keep logs for 90 days
+
+audit_fields:
+  required:
+    - timestamp # ISO 8601 UTC
+    - state # CLEAN, ADVERSARIAL, UNCERTAIN
+    - confidence # [0, 1]
+    - score # Raw detection score
+    - threshold # Threshold used
+    - stage # Fast-path (1) or full (2)
+    - random_seed # For reproducibility
+
+  optional:
+    - uncertainty_reason # Why marked UNCERTAIN
+    - features # Divergence values (KL, JS, W1)
+    - xai_summary # High-importance regions (no pixel data)
+
+  explicitly_forbidden:
+    - raw_image_data # Privacy violation
+    - pixel_values # Privacy violation
+    - classifier_internals # Proprietary
+    - gradients # Security risk
+
+uncertainty_thresholds:
+  max_divergence_disagreement: 0.5 # Max spread between KL, JS, W1
+  min_xai_consistency: 0.3 # Min alignment between XAI and divergence
+  ood_score_threshold: 10.0 # Scores beyond this → OOD
+determinism:
+  fixed_random_seed: 42
+  disable_multithreading: true # No thread variability
+  numpy_seed: 42
+  no_stochastic_xai: true # XAI must be deterministic
+
+compliance:
+  explanation_required: true # Every ADVERSARIAL needs explanation
+  audit_trail_required: true # Every decision must be logged
+  human_review_threshold: "UNCERTAIN" # UNCERTAIN → escalate to human
+  false_positive_reporting: true # Track FP rate

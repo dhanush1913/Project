@@ -1,0 +1,3 @@
+attack,auc,accuracy,precision,recall,tpr,fpr,num_clean,num_adv,seed
+FGSM_eps0.3,1.0,1.0,1.0,1.0,1.0,0.0,250,250,42
+PGD_eps0.3_steps40,1.0,0.628,1.0,0.256,0.256,0.0,250,250,42

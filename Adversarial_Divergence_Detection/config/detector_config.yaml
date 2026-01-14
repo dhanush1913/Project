@@ -1,0 +1,15 @@
+feature_names:
+  - kl_global
+  - js_global
+  - wasserstein_global
+  - kl_pixel_mean
+  - kl_pixel_max
+  - wasserstein_pixel_mean
+threshold: 18.873708724975586
+weights:
+  - 0.16717800498008728
+  - 0.16717800498008728
+  - 0.16517454385757446
+  - 0.16717800498008728
+  - 0.16717800498008728
+  - 0.16611342132091522
