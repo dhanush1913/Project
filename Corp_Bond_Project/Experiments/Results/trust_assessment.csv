@@ -1,0 +1,6 @@
+Metric,Value
+Adversarial AUC,1.000
+Train MSE,0.0211
+Test MSE,0.3856
+MSE Ratio,18.24x
+Trust Status,RETRAIN

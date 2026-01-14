@@ -1,0 +1,3 @@
+classifier,auc,std,interpretation
+logistic,1.0,0.0,"DANGER ZONE - severe regime break, predictions unreliable"
+gbm,1.0,0.0,"DANGER ZONE - severe regime break, predictions unreliable"
